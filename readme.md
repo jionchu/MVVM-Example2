@@ -1,6 +1,18 @@
 ![image](https://user-images.githubusercontent.com/66408194/134773279-98695b2a-a5c9-499c-8e32-d2336a378fba.png)
-### MainActivity에 ClientID와 ClientSecret을 변수로 제공했습니다.
-### 제공을 위해 MainActivity에 위치한 부분이라 이후 마음껏 수정하셔도 됩니다.
+#### MainActivity에 ClientID와 ClientSecret을 변수로 제공했습니다.
+#### 제공을 위해 MainActivity에 위치한 부분이라 이후 마음껏 수정하셔도 됩니다.
+
+<br>
+
+<br>
+
+## 브랜치 나누기
+![image](https://user-images.githubusercontent.com/66408194/134773920-3e17b04f-cf55-44d9-b255-640c49f78f0b.png)
+
+1. Chapter1의 경우 : 이미지처럼 반드시 <b>마스터</b>를 기반으로 둔 다음 id-chapter1로 생성(dev-donghwan-chapter1) 후 Fork한 뒤 진행
+2. Chapter2의 경우 : <b>Chapter1</b> 브랜치에서 이미지처럼 id-chapter2(dev-donghwan-chapter2)로 생성하여 Fork한 뒤 진행
+
+<br>
 
 <br>
 
