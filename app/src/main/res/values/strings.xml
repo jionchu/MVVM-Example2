@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MVVM2</string>
+    <string name="search_hint">검색어를 입력하세요</string>
+    <string name="search">SEARCH</string>
+    <string name="movie_poster">영화 포스터</string>
+    <string name="movie_title">영화 제목</string>
+    <string name="movie_rating">평점: 9.00</string>
 </resources>
