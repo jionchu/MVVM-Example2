@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.mvvm2.adapter.MainRecyclerAdapter
 import com.example.mvvm2.databinding.ActivityMainBinding
 import com.example.mvvm2.viewmodel.MovieListViewModel
 
@@ -12,7 +13,8 @@ import com.example.mvvm2.viewmodel.MovieListViewModel
  * **/
 class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MovieListViewModel
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var recyclerAdapter: MainRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +22,15 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
             .get(MovieListViewModel::class.java)
+        recyclerAdapter = MainRecyclerAdapter()
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = mainViewModel
         binding.lifecycleOwner = this
+        binding.mainRecyclerview.adapter = recyclerAdapter
+
+        mainViewModel.movieList.observe(this) {
+            recyclerAdapter.setItems(it)
+        }
     }
 }

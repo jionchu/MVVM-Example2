@@ -7,5 +7,5 @@ data class SearchResponse(
     @SerializedName("total") val total: Int,
     @SerializedName("start") val start: Int,
     @SerializedName("display") val display: Int,
-    @SerializedName("items") val movies: List<Movie>
+    @SerializedName("items") val movies: ArrayList<Movie>
 )

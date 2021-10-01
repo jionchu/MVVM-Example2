@@ -11,7 +11,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MovieListViewModel : ViewModel() {
-    val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val movieList: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
 
     fun searchMovie(query: String) {
 
