@@ -1,7 +1,10 @@
 package com.example.mvvm2.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Movie(
     @SerializedName("title") val title: String,
     @SerializedName("link") val link: String,
@@ -11,4 +14,4 @@ data class Movie(
     @SerializedName("userRating") val rating: String,
     @SerializedName("director") val director: String,
     @SerializedName("actor") val actor: String
-)
+) : Parcelable

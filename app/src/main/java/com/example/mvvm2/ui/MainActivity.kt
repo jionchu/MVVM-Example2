@@ -1,9 +1,10 @@
-package com.example.mvvm2
+package com.example.mvvm2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.mvvm2.R
 import com.example.mvvm2.adapter.MainRecyclerAdapter
 import com.example.mvvm2.databinding.ActivityMainBinding
 import com.example.mvvm2.viewmodel.MovieListViewModel
@@ -28,9 +29,5 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = mainViewModel
         binding.lifecycleOwner = this
         binding.mainRecyclerview.adapter = recyclerAdapter
-
-        mainViewModel.movieList.observe(this) {
-            recyclerAdapter.setItems(it)
-        }
     }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.mvvm2.viewmodel.MovieDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.DetailActivity">
+
+        <ImageView
+            android:id="@+id/detail_iv_poster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/detail_horizontal_margin"
+            android:contentDescription="@string/movie_poster"
+            android:imageFromUrl="@{viewModel.movie.image}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/black"
+            tools:layout_height="100dp" />
+
+        <TextView
+            android:id="@+id/detail_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/detail_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.movie.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_iv_poster"
+            tools:text="@string/movie_title" />
+
+        <TextView
+            android:id="@+id/detail_tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.movie.rating}"
+            app:layout_constraintStart_toStartOf="@id/detail_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_title"
+            tools:text="@string/movie_rating" />
+
+        <TextView
+            android:id="@+id/detail_tv_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.movie.director}"
+            app:layout_constraintStart_toStartOf="@id/detail_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_rating"
+            tools:text="@string/movie_director" />
+
+        <TextView
+            android:id="@+id/detail_tv_actor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.movie.actor}"
+            app:layout_constraintStart_toStartOf="@id/detail_tv_title"
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_director"
+            tools:text="@string/movie_actor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

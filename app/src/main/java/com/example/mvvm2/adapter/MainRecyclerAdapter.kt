@@ -1,5 +1,6 @@
 package com.example.mvvm2.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mvvm2.R
 import com.example.mvvm2.model.Movie
+import com.example.mvvm2.ui.DetailActivity
 
 class MainRecyclerAdapter : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>() {
     private val items: ArrayList<Movie> = arrayListOf()
@@ -20,6 +22,14 @@ class MainRecyclerAdapter : RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>
                 .with(itemView)
                 .load(movie.image)
                 .into(itemView.findViewById(R.id.movie_iv_poster))
+
+            // 아이템 클릭시 아이템 객체 인텐트로 전송
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailActivity::class.java).apply {
+                    putExtra("movie", movie)
+                }
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
