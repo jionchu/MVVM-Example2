@@ -11,9 +11,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MovieListViewModel : ViewModel() {
-    private var movieList: MutableLiveData<List<Movie>> = MutableLiveData()
+    val movieList: MutableLiveData<List<Movie>> = MutableLiveData()
 
     fun searchMovie(query: String) {
+
         val searchService = MyApplication.retrofit.create(SearchService::class.java)
         searchService.searchMovie(query).enqueue(object : Callback<SearchResponse> {
             override fun onResponse(
