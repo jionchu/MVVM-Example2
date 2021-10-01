@@ -8,12 +8,12 @@ import java.util.concurrent.TimeUnit
 
 class MyApplication : Application() {
     companion object {
-        val BASE_URL = "https://openapi.naver.com/v1/search/movie.json"
+        const val BASE_URL = "https://openapi.naver.com/v1/search/"
 
-        val client = OkHttpClient.Builder()
+        private val client = OkHttpClient.Builder()
             .readTimeout(5000, TimeUnit.MILLISECONDS)
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
-            .addNetworkInterceptor(XHeaderInterceptor())
+            .addNetworkInterceptor(XHeaderInterceptor()) // 자동 헤더 전송
             .build()
 
         val retrofit: Retrofit = Retrofit.Builder()
