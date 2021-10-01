@@ -2,6 +2,7 @@ package com.example.mvvm2.adapter
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -20,4 +21,9 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String) {
         .with(view.context)
         .load(imageUrl)
         .into(view)
+}
+
+@BindingAdapter("android:setRating")
+fun setRating(view: TextView, rating: String) {
+    view.text = "평점: $rating"
 }
