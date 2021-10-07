@@ -25,6 +25,6 @@ class DetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         val movie = intent.extras?.getParcelable<Movie>("movie")
-        detailViewModel.setInfo(movie)
+        movie?.let { detailViewModel.setInfo(it) }
     }
 }

@@ -4,11 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.example.mvvm2.model.Movie
 
 class MovieDetailViewModel : ViewModel() {
-    lateinit var movie: Movie
+    var movie: Movie = Movie("","","","","","","", "")
 
-    fun setInfo(movie: Movie?) {
-        if (movie != null) {
-            this.movie = movie
-        }
+    fun setInfo(movie: Movie) {
+        this.movie = movie
     }
 }

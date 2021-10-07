@@ -11,7 +11,7 @@ import com.example.mvvm2.model.Movie
 @BindingAdapter("android:setItems")
 fun setItems(view: View, items: ArrayList<Movie>?) {
     items?.run {
-        (((view as RecyclerView).adapter) as MainRecyclerAdapter).setItems(this)
+        (((view as? RecyclerView)?.adapter) as? MainRecyclerAdapter)?.setItems(this)
     }
 }
 
