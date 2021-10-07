@@ -2,6 +2,7 @@ package com.example.mvvm2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
@@ -29,5 +30,9 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = mainViewModel
         binding.lifecycleOwner = this
         binding.mainRecyclerview.adapter = recyclerAdapter
+
+        mainViewModel.toastMessage.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
     }
 }
