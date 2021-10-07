@@ -36,8 +36,19 @@
             android:layout_marginHorizontal="5dp"
             android:onClick="@{() -> viewModel.searchMovie(mainEtSearch.getText().toString())}"
             android:text="@string/search"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/main_btn_history"
             app:layout_constraintStart_toEndOf="@id/main_et_search"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/main_btn_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:onClick="@{() -> viewModel.showHistory()}"
+            android:text="@string/search_history"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_btn_search"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
