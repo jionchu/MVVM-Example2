@@ -56,5 +56,9 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.historyBtnClicked.observe(this) {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
+
+        // 검색 기록 클릭했을 때
+        val keyword = intent.extras?.getString("history")
+        keyword?.let { mainViewModel.searchMovie(keyword) }
     }
 }

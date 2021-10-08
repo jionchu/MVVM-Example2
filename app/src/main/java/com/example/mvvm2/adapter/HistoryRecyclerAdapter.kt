@@ -1,10 +1,12 @@
 package com.example.mvvm2.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm2.databinding.ItemHistoryBinding
+import com.example.mvvm2.ui.MainActivity
 
 class HistoryRecyclerAdapter : RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder>() {
     private val items = mutableListOf<String>()
@@ -14,6 +16,15 @@ class HistoryRecyclerAdapter : RecyclerView.Adapter<HistoryRecyclerAdapter.ViewH
 
         fun setItem(history: String) {
             binding.history = history
+
+            // 아이템 클릭시 아이템 객체 인텐트로 전송
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, MainActivity::class.java).apply {
+                    putExtra("history", history)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
