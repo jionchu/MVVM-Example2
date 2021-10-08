@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
 import com.example.mvvm2.adapter.MainRecyclerAdapter
 import com.example.mvvm2.databinding.ActivityMainBinding
+import com.example.mvvm2.util.SharedPrefManager
 import com.example.mvvm2.viewmodel.MovieListViewModel
 
 /**
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val sharedPreferences =
+            this.getSharedPreferences(getString(R.string.preference_key), MODE_PRIVATE)
+
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
             .get(MovieListViewModel::class.java)
         recyclerAdapter = MainRecyclerAdapter()
@@ -33,6 +37,19 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.toastMessage.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
+        mainViewModel.searchMessage.observe(this) {
+            val searchHistory = SharedPrefManager.getHistory(sharedPreferences)
+
+            if (searchHistory.contains(it)) {
+                searchHistory.remove(it)
+            } else if (searchHistory.size == 5) {
+                searchHistory.removeLast()
+            }
+
+            searchHistory.add(0, it)
+
+            SharedPrefManager.storeHistory(searchHistory, sharedPreferences)
         }
     }
 }

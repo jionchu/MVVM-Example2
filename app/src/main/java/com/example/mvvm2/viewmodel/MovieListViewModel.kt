@@ -12,6 +12,7 @@ import retrofit2.Response
 class MovieListViewModel : ViewModel() {
     val movieList: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
     val toastMessage: MutableLiveData<String> = MutableLiveData()
+    val searchMessage: MutableLiveData<String> = MutableLiveData()
 
     fun searchMovie(query: String) {
 
@@ -20,6 +21,7 @@ class MovieListViewModel : ViewModel() {
             return
         }
 
+        searchMessage.value = query
         Api.searchApi.searchMovie(query).enqueue(object : Callback<SearchResponse> {
             override fun onResponse(
                 call: Call<SearchResponse>,
@@ -27,6 +29,7 @@ class MovieListViewModel : ViewModel() {
             ) {
                 val searchResponse = response.body()
                 movieList.value = searchResponse?.movies
+
             }
 
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
