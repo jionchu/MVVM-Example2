@@ -1,5 +1,6 @@
 package com.example.mvvm2.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity() {
             searchHistory.add(0, it)
 
             SharedPrefManager.storeHistory(searchHistory, sharedPreferences)
+        }
+
+        mainViewModel.historyBtnClicked.observe(this) {
+            startActivity(Intent(this, HistoryActivity::class.java))
         }
     }
 }

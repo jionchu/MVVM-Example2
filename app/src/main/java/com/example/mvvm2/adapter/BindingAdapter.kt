@@ -15,6 +15,13 @@ fun setItems(view: View, items: ArrayList<Movie>?) {
     }
 }
 
+@BindingAdapter("android:setHistoryItems")
+fun setHistoryItems(view: View, items: MutableList<String>) {
+    items?.run {
+        ((view as? RecyclerView)?.adapter as? HistoryRecyclerAdapter)?.setItems(this)
+    }
+}
+
 @BindingAdapter("android:imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String) {
     Glide
