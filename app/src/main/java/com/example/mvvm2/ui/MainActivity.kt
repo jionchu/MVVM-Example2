@@ -1,5 +1,6 @@
 package com.example.mvvm2.ui
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -55,6 +56,14 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.historyBtnClicked.observe(this) {
             startActivity(Intent(this, HistoryActivity::class.java))
+        }
+
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setMessage(getString(R.string.search_loading))
+
+        mainViewModel.isLoading.observe(this) {
+            if (it) progressDialog.show()
+            else progressDialog.hide()
         }
 
         // 검색 기록 클릭했을 때

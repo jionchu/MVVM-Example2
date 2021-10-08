@@ -15,6 +15,7 @@ class MovieListViewModel : ViewModel() {
     val searchMessage: MutableLiveData<String> = MutableLiveData()
     val historyBtnClicked: MutableLiveData<Boolean> = MutableLiveData()
     val tvVisibility: MutableLiveData<Boolean> = MutableLiveData()
+    val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
     fun searchMovie(query: String) {
 
@@ -24,6 +25,7 @@ class MovieListViewModel : ViewModel() {
         }
 
         searchMessage.value = query
+        isLoading.value = true
         Api.searchApi.searchMovie(query).enqueue(object : Callback<SearchResponse> {
             override fun onResponse(
                 call: Call<SearchResponse>,
@@ -33,11 +35,13 @@ class MovieListViewModel : ViewModel() {
                 movieList.value = searchResponse?.movies
 
                 tvVisibility.value = movieList.value?.size == 0
+                isLoading.value = false
             }
 
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                 toastMessage.value = "영화 검색에 실패했습니다."
                 tvVisibility.value = true
+                isLoading.value = false
             }
         })
     }

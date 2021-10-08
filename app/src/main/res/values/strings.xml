@@ -3,6 +3,7 @@
     <string name="preference_key">MOVIE_SEARCH</string>
     <string name="search_hint">검색어를 입력하세요</string>
     <string name="search">SEARCH</string>
+    <string name="search_loading">검색 결과를 가져오는 중…</string>
     <string name="search_history">HISTORY</string>
     <string name="movie_poster">영화 포스터</string>
     <string name="movie_title">영화 제목</string>
