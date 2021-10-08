@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.example.mvvm2.viewmodel.MovieListViewModel" />
@@ -68,6 +70,15 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/main_line"
             tools:listitem="@layout/item_movie" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/search_empty"
+            android:visibility="@{viewModel.tvVisibility ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_line" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

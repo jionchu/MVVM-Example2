@@ -14,6 +14,7 @@ class MovieListViewModel : ViewModel() {
     val toastMessage: MutableLiveData<String> = MutableLiveData()
     val searchMessage: MutableLiveData<String> = MutableLiveData()
     val historyBtnClicked: MutableLiveData<Boolean> = MutableLiveData()
+    val tvVisibility: MutableLiveData<Boolean> = MutableLiveData()
 
     fun searchMovie(query: String) {
 
@@ -31,10 +32,12 @@ class MovieListViewModel : ViewModel() {
                 val searchResponse = response.body()
                 movieList.value = searchResponse?.movies
 
+                tvVisibility.value = movieList.value?.size == 0
             }
 
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                 toastMessage.value = "영화 검색에 실패했습니다."
+                tvVisibility.value = true
             }
         })
     }
