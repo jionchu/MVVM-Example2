@@ -30,7 +30,13 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
             .get(MovieListViewModel::class.java)
-        recyclerAdapter = MainRecyclerAdapter()
+        recyclerAdapter = MainRecyclerAdapter {
+            // 아이템 클릭시 아이템 객체 인텐트로 전송
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra("movie", it)
+            }
+            this.startActivity(intent)
+        }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = mainViewModel

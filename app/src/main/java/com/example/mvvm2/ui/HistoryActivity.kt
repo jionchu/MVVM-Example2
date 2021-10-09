@@ -1,10 +1,8 @@
 package com.example.mvvm2.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
@@ -30,7 +28,13 @@ class HistoryActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_history)
         binding.viewModel = historyViewModel
         binding.lifecycleOwner = this
-        binding.historyRecyclerview.adapter = HistoryRecyclerAdapter()
+        binding.historyRecyclerview.adapter = HistoryRecyclerAdapter {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("history", it)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            }
+            this.startActivity(intent)
+        }
 
         val history: MutableList<String> = SharedPrefManager.getHistory(sharedPreferences)
         historyViewModel.setItems(history)
