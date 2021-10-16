@@ -13,7 +13,6 @@ class MovieListViewModel : ViewModel() {
     val movieList: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
     val toastMessage: MutableLiveData<String> = MutableLiveData()
     val searchMessage: MutableLiveData<String> = MutableLiveData()
-    val historyBtnClicked: MutableLiveData<Boolean> = MutableLiveData()
     val tvVisibility: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -44,9 +43,5 @@ class MovieListViewModel : ViewModel() {
                 isLoading.value = false
             }
         })
-    }
-
-    fun showHistory() {
-        historyBtnClicked.value = true
     }
 }

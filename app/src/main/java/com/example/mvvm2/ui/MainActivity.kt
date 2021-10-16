@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             SharedPrefManager.storeHistory(searchHistory, sharedPreferences)
         }
 
-        mainViewModel.historyBtnClicked.observe(this) {
+        binding.mainBtnHistory.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
 
