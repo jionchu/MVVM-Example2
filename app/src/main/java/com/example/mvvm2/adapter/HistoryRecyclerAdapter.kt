@@ -4,24 +4,23 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mvvm2.databinding.ItemMovieBinding
-import com.example.mvvm2.model.Movie
+import com.example.mvvm2.databinding.ItemHistoryBinding
 
-class MainRecyclerAdapter(private val itemClickListener: (Movie) -> Unit) :
-    RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder>() {
-    private val items: ArrayList<Movie> = arrayListOf()
+class HistoryRecyclerAdapter(private val itemClickListener: (String) -> Unit) :
+    RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder>() {
+    private val items = mutableListOf<String>()
 
-    class ViewHolder(private val binding: ItemMovieBinding) :
+    class ViewHolder(private val binding: ItemHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun setItem(movie: Movie) {
-            binding.movie = movie
+        fun setItem(history: String) {
+            binding.history = history
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -33,7 +32,7 @@ class MainRecyclerAdapter(private val itemClickListener: (Movie) -> Unit) :
     override fun getItemCount(): Int = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(items: List<Movie>) {
+    fun setItems(items: MutableList<String>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
