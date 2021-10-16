@@ -26,12 +26,10 @@ class DetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         val movie = intent.extras?.getParcelable<Movie>("movie")
-        if (movie != null) {
-            detailViewModel.setInfo(movie)
-        } else {
-            // databinding null 오류 방지
-            detailViewModel.setInfo(Movie("", "", "", "", "", "", "", ""))
-            Toast.makeText(this, "영화 상세 정보를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
-        }
+
+        // movie가 null인 경우 초기화 -> databinding null 오류 방지
+        detailViewModel.setInfo(movie ?: Movie("", "", "", "", "", "", "", ""))
+        // movie가 null인 경우 메시지 띄우기
+        movie ?: Toast.makeText(this, getString(R.string.detail_fail), Toast.LENGTH_SHORT).show()
     }
 }
