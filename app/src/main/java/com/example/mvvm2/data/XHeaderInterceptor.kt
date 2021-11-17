@@ -1,4 +1,4 @@
-package com.example.mvvm2
+package com.example.mvvm2.data
 
 import okhttp3.Interceptor
 import okhttp3.Response

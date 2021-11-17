@@ -1,4 +1,4 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.main
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -8,16 +8,17 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
-import com.example.mvvm2.adapter.MainRecyclerAdapter
+import com.example.mvvm2.ui.adapter.MainRecyclerAdapter
 import com.example.mvvm2.databinding.ActivityMainBinding
+import com.example.mvvm2.ui.detail.DetailActivity
+import com.example.mvvm2.ui.history.HistoryActivity
 import com.example.mvvm2.util.SharedPrefManager
-import com.example.mvvm2.viewmodel.MovieListViewModel
 
 /**
  * api doc = https://developers.naver.com/docs/search/movie/ \
  * **/
 class MainActivity : AppCompatActivity() {
-    private lateinit var mainViewModel: MovieListViewModel
+    private lateinit var mainViewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerAdapter: MainRecyclerAdapter
 
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             this.getSharedPreferences(getString(R.string.preference_key), MODE_PRIVATE)
 
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(MovieListViewModel::class.java)
+            .get(MainViewModel::class.java)
         recyclerAdapter = MainRecyclerAdapter {
             // 아이템 클릭시 아이템 객체 인텐트로 전송
             val intent = Intent(this, DetailActivity::class.java).apply {

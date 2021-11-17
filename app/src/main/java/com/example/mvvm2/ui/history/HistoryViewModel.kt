@@ -1,9 +1,9 @@
-package com.example.mvvm2.viewmodel
+package com.example.mvvm2.ui.history
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HistoryListViewModel : ViewModel() {
+class HistoryViewModel : ViewModel() {
 
     val historyList: MutableLiveData<MutableList<String>> = MutableLiveData()
     val tvVisibility: MutableLiveData<Boolean> = MutableLiveData()

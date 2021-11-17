@@ -1,4 +1,4 @@
-package com.example.mvvm2.adapter
+package com.example.mvvm2.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

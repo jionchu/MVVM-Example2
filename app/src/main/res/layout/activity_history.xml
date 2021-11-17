@@ -9,13 +9,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.mvvm2.viewmodel.HistoryListViewModel" />
+            type="com.example.mvvm2.ui.history.HistoryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.HistoryActivity">
+        tools:context=".ui.history.HistoryActivity">
 
         <TextView
             android:id="@+id/history_title"

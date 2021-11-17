@@ -1,4 +1,4 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.history
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,13 +6,13 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
-import com.example.mvvm2.adapter.HistoryRecyclerAdapter
+import com.example.mvvm2.ui.adapter.HistoryRecyclerAdapter
 import com.example.mvvm2.databinding.ActivityHistoryBinding
+import com.example.mvvm2.ui.main.MainActivity
 import com.example.mvvm2.util.SharedPrefManager
-import com.example.mvvm2.viewmodel.HistoryListViewModel
 
 class HistoryActivity : AppCompatActivity() {
-    private lateinit var historyViewModel: HistoryListViewModel
+    private lateinit var historyViewModel: HistoryViewModel
     private lateinit var binding: ActivityHistoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class HistoryActivity : AppCompatActivity() {
             this.getSharedPreferences(getString(R.string.preference_key), MODE_PRIVATE)
 
         historyViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(HistoryListViewModel::class.java)
+            .get(HistoryViewModel::class.java)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_history)
         binding.viewModel = historyViewModel

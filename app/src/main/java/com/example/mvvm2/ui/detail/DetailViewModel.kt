@@ -1,10 +1,10 @@
-package com.example.mvvm2.viewmodel
+package com.example.mvvm2.ui.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvm2.model.Movie
+import com.example.mvvm2.data.model.Movie
 
-class MovieDetailViewModel : ViewModel() {
+class DetailViewModel : ViewModel() {
     val movie: MutableLiveData<Movie> = MutableLiveData()
 
     fun setInfo(movie: Movie){

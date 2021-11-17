@@ -1,6 +1,6 @@
-package com.example.mvvm2.api
+package com.example.mvvm2.data.api
 
-import com.example.mvvm2.XHeaderInterceptor
+import com.example.mvvm2.data.XHeaderInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

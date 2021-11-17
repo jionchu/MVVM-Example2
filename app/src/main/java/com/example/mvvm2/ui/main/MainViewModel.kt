@@ -1,15 +1,15 @@
-package com.example.mvvm2.viewmodel
+package com.example.mvvm2.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvm2.api.Api
-import com.example.mvvm2.model.Movie
-import com.example.mvvm2.model.SearchResponse
+import com.example.mvvm2.data.api.Api
+import com.example.mvvm2.data.model.Movie
+import com.example.mvvm2.data.model.SearchResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieListViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
     val movieList: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
     val toastMessage: MutableLiveData<String> = MutableLiveData()
     val searchMessage: MutableLiveData<String> = MutableLiveData()

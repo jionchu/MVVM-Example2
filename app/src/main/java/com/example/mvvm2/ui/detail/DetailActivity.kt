@@ -1,4 +1,4 @@
-package com.example.mvvm2.ui
+package com.example.mvvm2.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,11 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm2.R
 import com.example.mvvm2.databinding.ActivityDetailBinding
-import com.example.mvvm2.model.Movie
-import com.example.mvvm2.viewmodel.MovieDetailViewModel
+import com.example.mvvm2.data.model.Movie
 
 class DetailActivity : AppCompatActivity() {
-    private lateinit var detailViewModel: MovieDetailViewModel
+    private lateinit var detailViewModel: DetailViewModel
     private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +18,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())
-            .get(MovieDetailViewModel::class.java)
+            .get(DetailViewModel::class.java)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
         binding.viewModel = detailViewModel
